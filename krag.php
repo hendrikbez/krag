@@ -2,10 +2,11 @@
 <?php include 'layouts/head-main.php'; ?>
 <!DOCTYPE html>
 <html>
-<head>
-<?php include 'layouts/body.php'; ?>
+	<head>
+		<?php include 'layouts/body.php'; ?>
 <div id="layout-wrapper">
-<?php include 'layouts/menu.php'; ?>
+		<?php include 'layouts/menu.php'; ?>
+
 
 <link href="./assets/css/googleapi.css" rel="stylesheet" />
  <!--datatable css--   add this from 80-95-->
@@ -17,67 +18,67 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Eenhede</title>
     <style>
-  body {
-  text-align: center;
-}
-table {
-   font-family: 'Comic Sans MS', cursive, sans-serif;
-  border-collapse: separate;
-  border-spacing: 2px;
-  width: 70%;
-  margin: auto;
-  margin-top: 10px;
-  border: 2px solid #ddd;
-  font-size: 15px;
-  font-weight: bold;
-  color: #00FF00;
-  border-color: purple;
-}
-th, td {
-  border: 1px solid #ddd;
-  text-align: left;
-  padding: 8px;
-}
-tr:nth-child(even) {
-  background-color: #800080;
-}
-tr:nth-child(odd) {
-  background-color: #800080;
-}
-th {
-  background-color: #4CAF50;
-  color: white;
-}
-form {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 10px;
-}
-form > * {
-  margin-right: 10px;
-}
-label {
-display: inline-block;
-width: 100px;
-text-align: right;
-margin-top: 30px;
-}
-input[type="date"], input[type="number"], input[type="submit"] {
-width: 150px;
-padding: 5px;
-border-radius: 12px;
-border: 1px solid #ccc;
-font-size: 14px;
-margin-top: 20px;
-}
-h1 {
-  margin-bottom: 20px;
-}
-.sparkle-button-red {
-  background-color: red;
-  color: white;
+ body {
+			text-align: center;
+		}
+		table {
+			font-family: 'Comic Sans MS', cursive, sans-serif;
+			border-collapse: separate;
+			border-spacing: 2px;
+			width: 70%;
+			margin: auto;
+			margin-top: 10px;
+			border: 2px solid #ddd;
+			font-size: 15px;
+			font-weight: bold;
+			color: #00FF00;
+			border-color: purple;
+		}
+		th, td {
+			border: 1px solid #ddd;
+			text-align: left;
+			padding: 8px;
+		}
+		tr:nth-child(even) {
+			background-color: #800080;
+		}
+		tr:nth-child(odd) {
+			background-color: #800080;
+		}
+		th {
+			background-color: #4CAF50;
+			color: white;
+		}
+		form {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			margin-bottom: 10px;
+		}
+		form > * {
+			margin-right: 10px;
+		}
+		label {
+			display: inline-block;
+			width: 100px;
+			text-align: right;
+			margin-top: 30px;
+		}
+		input[type="date"], input[type="number"], input[type="submit"] {
+			width: 150px;
+			padding: 5px;
+			border-radius: 12px;
+			border: 1px solid #ccc;
+			font-size: 14px;
+			margin-top: 20px;
+		}
+		h1 {
+			margin-bottom: 20px;
+		}
+			.sparkle-button-red {
+			background-color: red;
+			color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 12px;
@@ -127,38 +128,34 @@ margin-top: 20px;
   border: 1px solid #ccc;
 }
 </style>
-</head>
-<?php include 'layouts/body.php'; ?>
-<!-- Begin page --><div id="layout-wrapper">
-<?php include 'layouts/menu.php'; ?>
 <body>
-    <h1 style="margin-top: 70px;">•·.·''·.·• Voeg inligting by •·.·''·.·</h1>
+<center><h1 style="margin-top: 70px;">•·.·''·.·• Voeg inligting by •·.·''·.·</h1></center>
     <div class="container-flex">
-    <div style="display: flex; justify-content: center; align-items: center;">
-  <div style="border: 1px solid black; border-radius: 25px; padding: 10px; height: 100px; width: 200px; margin: 10px; display: table;">
-    <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" style="display: table-cell; vertical-align: middle;">
-      <label for="datum" style="display: inline-block; margin: auto; text-align: center;">Datum Gekoop:</label>
-      <input type="date" name="datum" required style="display: block; margin: auto; text-align: center;">
-      <label for="koop" style="display: block; margin: auto; text-align: center;">Koop:</label>
-      <input type="number" min="0" step="0.1" name="koop" style="display: block; margin: auto; text-align: center;">
-      <label for="ontvang" style="display: block; margin: auto; text-align: center;">Ontvang:</label>
-      <input type="number" min="0" step="0.1" name="ontvang" required style="display: block; margin: auto; text-align: center;">
-      <input type="submit" name="submit1" value="Koop Krag" class="sparkle-button-red">
-    </form>
-  </div>
-  <div style="border: 1px solid black; border-radius: 25px; padding: 10px; height: 280px; width: 200px; margin: 10px; display: table; margin-top: 12px">
-    <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" style="display: table-cell; vertical-align: middle;">
-      <label for="datum" style="display: block; margin: auto; text-align: center;">Datum Verander:</label>
-      <input type="date" name="datum" required style="display: block; margin: auto; text-align: center;">
-      <label for="beskikbaar" style="display: block; margin: auto; text-align: center;">Beskikbaar:</label>
-      <input type="number" min="0" step="0.1" name="beskikbaar" required style="display: block; margin: auto; text-align: center;">
-      <input type="submit" name="submit2" value="Gebruik" class="sparkle-button-blue">
-    </form>
-  </div>
-</div>
+		<div style="display: flex; justify-content: center; align-items: center;">
+			<div style="border: 1px solid black; border-radius: 25px; padding: 10px; height: 100px; width: 200px; margin: 10px; display: table;">
+				<form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" style="display: table-cell; vertical-align: middle;">
+					<label for="datum" style="display: inline-block; margin: auto; text-align: center;">Datum Gekoop:</label>
+					<input type="date" name="datum" required style="display: block; margin: auto; text-align: center;">
+					<label for="koop" style="display: block; margin: auto; text-align: center;">Koop:</label>
+					<input type="number" min="0" step="0.1" name="koop" style="display: block; margin: auto; text-align: center;">
+					<label for="ontvang" style="display: block; margin: auto; text-align: center;">Ontvang:</label>
+					<input type="number" min="0" step="0.1" name="ontvang" required style="display: block; margin: auto; text-align: center;">
+					<input type="submit" name="submit1" value="Koop Krag" class="sparkle-button-red">
+				</form>
+			</div>
+			<div style="border: 1px solid black; border-radius: 25px; padding: 10px; height: 280px; width: 200px; margin: 10px; display: table; margin-top: 12px">
+				<form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" style="display: table-cell; vertical-align: middle;">
+					<label for="datum" style="display: block; margin: auto; text-align: center;">Datum Verander:</label>
+					<input type="date" name="datum" required style="display: block; margin: auto; text-align: center;">
+					<label for="beskikbaar" style="display: block; margin: auto; text-align: center;">Beskikbaar:</label>
+					<input type="number" min="0" step="0.1" name="beskikbaar" required style="display: block; margin: auto; text-align: center;">
+					<input type="submit" name="submit2" value="Gebruik" class="sparkle-button-blue">
+				</form>
+			</div>
+		</div>
 <?php include 'layouts/head-main.php'; ?>
 <?php include 'layouts/customizer.php'; ?>  <!--add this also 153-154 before script-->
-<?php include 'layouts/vendor-scripts.php'; ?>			
+<?php include 'layouts/vendor-scripts.php'; ?>	
     <?php
 // Enable error reporting
 ini_set('display_errors', 1);
@@ -189,7 +186,7 @@ if (isset($_POST['submit1'])) {
   VALUES ('$datum', '$beskikbaar', '$gebruik', '$koop', '$ontvang', '$koste')";
 
     if ($conn->query($sql) === true) {
-        echo "<script>alert('Entry 1 added successfully');</script>";
+        echo "<script>alert('Vandag se Eenhede is Bygevoeg');</script>";
         ;
     } else {
         echo "<script>alert('Error: " . $sql . " " . $conn->error . "');</script>";
@@ -211,7 +208,7 @@ if (isset($_POST['submit2'])) {
   VALUES ('$datum', '$beskikbaar', '$gebruik', '$koop', '$ontvang', '$koste')";
 
     if ($conn->query($sql) === true) {
-        echo "<script>alert('Entry 2 added successfully');</script>";
+        echo "<script>alert('Eenhede Gekoop is Bygevoeg');</script>";
     } else {
         echo "<script>alert('Error: " . $sql . " " . $conn->error . "');</script>";
     }
@@ -257,85 +254,90 @@ $result_gebruik = $conn->query($sql_gebruik);
 $row_gebruik = $result_gebruik->fetch_assoc();
 $total_gebruik = $row_gebruik["TotalGebruik"];
 echo '
-<div style="display:flex; flex-direction:column; align-items:center;">
-
-   <div style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px;">
-   <span style="font-weight:bold;">
-   <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
-   <lord-icon src="https://cdn.lordicon.com/jryilvyz.json" trigger="loop" style="width:50px;height:50px"></lord-icon>
-   Nou Beskikbaar:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>
-<span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">' . $last_beskikbaar . '</span>
-   </div>
-
-   <div style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px;">
-   <span style="font-weight:bold;">
-   <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
-   <lord-icon src="https://cdn.lordicon.com/lpddubrl.json" trigger="loop" style="width:50px;height:50px"></lord-icon>
-   Totaal in Rand Gekoop:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-   <span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">' . $total_koop . '</span>
-   </div>
-
-   <div style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px;">
-      <span style="font-weight:bold;">
-      <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
-   <lord-icon src="https://cdn.lordicon.com/uzajjeek.json" trigger="loop" style="width:50px;height:50px"></lord-icon>
-      Totale Eenhede Gekry na Gekoop:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-      <span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">' . $total_ontvang . '</span>
-   </div>
-
-   <div style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px;">
-      <span style="font-weight:bold;">
-      <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
-   <lord-icon  src="https://cdn.lordicon.com/opirrrtw.json" trigger="loop" style="width:50px;height:50px"></lord-icon>
-      Totale Eenhede Gebruik tot nou:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-      <span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">' . $total_gebruik . '</span>
-   </div>
-
-
+		<div style="display:flex; ">
+			<div style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px; background-color: #00FFFF;"> 
+				<span style="font-weight:bold;">
+					<script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+					<lord-icon src="https://cdn.lordicon.com/jryilvyz.json" trigger="loop" style="width:50px;height:50px"></lord-icon>
+					Nou Beskikbaar: ➔
+				</span>
+				<span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">' . $last_beskikbaar . '</span>
+			</div>
+			<div style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px; background-color: #FFFFFF;">
+				<span style="font-weight:bold;">
+					<script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+					<lord-icon src="https://cdn.lordicon.com/lpddubrl.json" trigger="loop" style="width:50px;height:50px"></lord-icon>
+					Totaal in Rand Gekoop: ➤
+				</span>
+				<span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">R ' . $total_koop . '</span>
+			</div>
+			<div style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px; background-color: #FFFFCC;">
+				<span style="font-weight:bold;">
+					<script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+					<lord-icon src="https://cdn.lordicon.com/uzajjeek.json" trigger="loop" style="width:50px;height:50px"></lord-icon>
+					Totale Eenhede Gekry na Gekoop: ➨
+					</span>
+					<span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">' . $total_ontvang . '</span>
+			</div>
+			<div style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px; background-color: #CCFFFF;">
+				<span style="font-weight:bold;">
+					<script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+					<lord-icon  src="https://cdn.lordicon.com/opirrrtw.json" trigger="loop" style="width:50px;height:50px"></lord-icon>
+					Totale Eenhede Gebruik tot nou: ➽
+				</span>
+				<span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">' . $total_gebruik . '</span>
+			</div>
+        </div>    
 
 
-   <div style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px;">
-   <span style="font-weight:bold;">
-   <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
-<lord-icon src="https://cdn.lordicon.com/euubzcfz.json" trigger="loop" style="width:50px;height:50px">
-</lord-icon>
-Gemiddelde Gebruik:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">' . $avg_gebruik . '</span>
-</div>
 
-<div style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px;">
-<span style="font-weight:bold;">
-<script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
-<lord-icon src="https://cdn.lordicon.com/gundqgib.json" trigger="loop" style="width:50px;height:50px">
-</lord-icon>
-   Gemiddelde Weeklikse  Gebruik:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">' . $avg_gebruik_weekly . '</span>
-</div>
+        <div style="display:flex; flex-direction:column; align-items:center;">
+		    <div style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px; background-color: #CCFFCC;">
+				<span style="font-weight:bold;">
+					<script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+					<lord-icon src="https://cdn.lordicon.com/euubzcfz.json" trigger="loop" style="width:50px;height:50px">
+					</lord-icon>
+					Gemiddelde Gebruik: ➼
+				</span>
+				<span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">' . $avg_gebruik . '</span>
+			</div>
 
-<div style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px;">
-   <span style="font-weight:bold;">
-   <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
-<lord-icon src="https://cdn.lordicon.com/oqhteyrz.json" trigger="loop" style="width:50px;height:50px"></lord-icon>
-   Gemiddelde Maandelikse Gebruik:&nbsp;&nbsp;&nbsp;</span>
-   <span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">' . $avg_gebruik_monthly . '</span>
-</div>
-
-<div style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px;">
-   <span style="font-weight:bold;">
-   <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
-   <lord-icon src="https://cdn.lordicon.com/ujrcwvwy.json" trigger="loop" style="width:50px;height:50px"></lord-icon>
-   Gemiddelde Jaarlikse Gebruik:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-   <span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">' . $avg_gebruik_yearly . '</span>
-</div>
-
-   </div>
+            <div style="display:flex; flex-direction:column; align-items:center;">
+			<div style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px; background-color: #CCCCFF;">
+				<span style="font-weight:bold;">
+				<script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+				<lord-icon src="https://cdn.lordicon.com/gundqgib.json" trigger="loop" style="width:50px;height:50px">
+				</lord-icon>
+				Gemiddelde Weeklikse Gebruik: ➻
+				</span>
+				<span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">' . $avg_gebruik_weekly . '</span>
+			</div>
+			<div style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px; background-color: #CCCCCC;">
+				<span style="font-weight:bold;">
+				<script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+				<lord-icon src="https://cdn.lordicon.com/oqhteyrz.json" trigger="loop" style="width:50px;height:50px"></lord-icon>
+				Gemiddelde Maandelikse Gebruik: ➺
+				</span>
+				<span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">' . $avg_gebruik_monthly . '</span>
+			</div>
+			<div style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px; background-color: #FFCCFF;">
+				<span style="font-weight:bold;">
+				<script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+				<lord-icon src="https://cdn.lordicon.com/ujrcwvwy.json" trigger="loop" style="width:50px;height:50px"></lord-icon>
+				Gemiddelde Jaarlikse Gebruik: ➠
+				</span>
+				<span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">' . $avg_gebruik_yearly . '</span>
+			</div>
+       
+		
 </div>';
+
 // Display table
 $afrikaans_months = array("Januarie", "Februarie", "Maart", "April", "Mei", "Junie", "Julie", "Augustus", "September", "Oktober", "November", "Desember");
 $sql = "SELECT * FROM eenhede ORDER BY Id DESC";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
+
     echo "<table>";
     echo "<tr>
     <th style='font-size: 20px; text-align: center; font-family: Comic Sans MS; color: lime;'>
@@ -374,5 +376,6 @@ if ($result->num_rows > 0) {
 }
 $conn->close();
 ?>
+</div>
 </body>
 </html>
