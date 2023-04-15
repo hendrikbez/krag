@@ -121,15 +121,36 @@ margin-top: 20px;
   display: flex;
   justify-content: center;
   
-  width: 1100px;
-  height: 600px;
+  width: 1700px;
+  height: 310px;
   margin: auto;
   border-radius: 25px;
   border: 1px solid #ccc;
 }
+
+.flex-container {
+        display: flex;
+        flex-direction: column;
+    }
+    .flex-container-half {
+        width: 50%;
+  height: 200px;
+  box-sizing: border-box;
+  width: 600px;
+    }
+    .flex-container-row {
+        flex-direction: row;
+    }
+	.label-output {
+   width: 100%;
+   margin-bottom: 10px;
+}
+.flex-container-half + .flex-container-half {
+   margin-left: 10px;
+}
 </style>
 <body>
-<center><h1 style="margin-top: 70px;">•·.·''·.·• Voeg inligting by •·.·''·.·</h1></center>
+<center><h1 style="margin-top: 70px;">•·.·''·.·• Voeg inligting by •·.·''·.· . ˏˋ°•*⁀➷ˏˋ°•*⁀➷ . . ⇢ ˗ˏˋ [Gemiddelde Gebruik] ࿐ྂ</h1></center>
     <div class="container-flex">
 		<div style="display: flex; justify-content: center; align-items: center;">
 			<div style="border: 1px solid black; border-radius: 25px; padding: 10px; height: 100px; width: 200px; margin: 10px; display: table;">
@@ -217,24 +238,29 @@ if (isset($_POST['submit2'])) {
 $gebruik_query = "SELECT AVG(Gebruik) AS AvgGebruik FROM eenhede";
 $gebruik_result = $conn->query($gebruik_query);
 $avg_gebruik = $gebruik_result->fetch_assoc()['AvgGebruik'];
+$formatted_avg_gebruik = number_format($avg_gebruik, 1);
 // Weekly average usage
 $gebruik_query = "SELECT AVG(Gebruik) AS AvgGebruik FROM eenhede WHERE Datum >= DATE_SUB(NOW(), INTERVAL 1 WEEK)";
 $gebruik_result = $conn->query($gebruik_query);
 $avg_gebruik_weekly = $gebruik_result->fetch_assoc()['AvgGebruik'];
+$formatted_avg_gebruik_weekly = number_format($avg_gebruik_weekly, 1);
 // Monthly average usage
 $gebruik_query = "SELECT AVG(Gebruik) AS AvgGebruik FROM eenhede WHERE Datum >= DATE_SUB(NOW(), INTERVAL 1 MONTH)";
 $gebruik_result = $conn->query($gebruik_query);
 $avg_gebruik_monthly = $gebruik_result->fetch_assoc()['AvgGebruik'];
+$formatted_avg_gebruik_monthly = number_format($avg_gebruik_monthly, 1);
 // Yearly average usage
 $gebruik_query = "SELECT AVG(Gebruik) AS AvgGebruik FROM eenhede WHERE Datum >= DATE_SUB(NOW(), INTERVAL 1 YEAR)";
 $gebruik_result = $conn->query($gebruik_query);
 $avg_gebruik_yearly = $gebruik_result->fetch_assoc()['AvgGebruik'];
+$formatted_avg_gebruik_yearly = number_format($avg_gebruik_yearly, 1);
 // Get the last "Beskikbaar" value
 $last_beskikbaar_query = "SELECT Beskikbaar FROM eenhede ORDER BY Id DESC LIMIT 1";
 $last_beskikbaar_result = $conn->query($last_beskikbaar_query);
 if ($last_beskikbaar_result->num_rows > 0) {
     $last_beskikbaar_row = $last_beskikbaar_result->fetch_assoc();
     $last_beskikbaar = $last_beskikbaar_row['Beskikbaar'];
+    $formatted_last_beskikbaar = number_format($last_beskikbaar, 1);
 } else {
     $last_beskikbaar = 0;
 }
@@ -248,96 +274,93 @@ $sql_ontvang = "SELECT SUM(Ontvang) AS TotalOntvang FROM eenhede";
 $result_ontvang = $conn->query($sql_ontvang);
 $row_ontvang = $result_ontvang->fetch_assoc();
 $total_ontvang = $row_ontvang["TotalOntvang"];
+$formatted_total_ontvang = number_format($total_ontvang, 1);
 // Calculate total of "Gebruik" column
 $sql_gebruik = "SELECT SUM(Gebruik) AS TotalGebruik FROM eenhede";
 $result_gebruik = $conn->query($sql_gebruik);
 $row_gebruik = $result_gebruik->fetch_assoc();
 $total_gebruik = $row_gebruik["TotalGebruik"];
+$formatted_total_gebruik = number_format($total_gebruik, 1);
 echo '
-		<div style="display:flex; ">
-			<div style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px; background-color: #00FFFF;"> 
-				<span style="font-weight:bold;">
-					<script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
-					<lord-icon src="https://cdn.lordicon.com/jryilvyz.json" trigger="loop" style="width:50px;height:50px"></lord-icon>
-					Nou Beskikbaar: ➔
-				</span>
-				<span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">' . $last_beskikbaar . '</span>
-			</div>
-			<div style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px; background-color: #FFFFFF;">
-				<span style="font-weight:bold;">
-					<script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
-					<lord-icon src="https://cdn.lordicon.com/lpddubrl.json" trigger="loop" style="width:50px;height:50px"></lord-icon>
-					Totaal in Rand Gekoop: ➤
-				</span>
-				<span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">R ' . $total_koop . '</span>
-			</div>
-			<div style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px; background-color: #FFFFCC;">
-				<span style="font-weight:bold;">
-					<script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
-					<lord-icon src="https://cdn.lordicon.com/uzajjeek.json" trigger="loop" style="width:50px;height:50px"></lord-icon>
-					Totale Eenhede Gekry na Gekoop: ➨
-					</span>
-					<span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">' . $total_ontvang . '</span>
-			</div>
-			<div style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px; background-color: #CCFFFF;">
-				<span style="font-weight:bold;">
-					<script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
-					<lord-icon  src="https://cdn.lordicon.com/opirrrtw.json" trigger="loop" style="width:50px;height:50px"></lord-icon>
-					Totale Eenhede Gebruik tot nou: ➽
-				</span>
-				<span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">' . $total_gebruik . '</span>
-			</div>
-        </div>    
+<div style="display:flex; flex-direction:row;  padding: 10px;">
+	<div class="flex-container flex-container-half">
+		<div class="label-output" style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px; background-color: #00FFFF;"> 
+			<span style="font-weight:bold;">
+			<script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+			<lord-icon src="https://cdn.lordicon.com/jryilvyz.json" trigger="loop" style="width:50px;height:50px"></lord-icon>
+			Beskikbaare Eenhede: ➔
+			</span>
+			<span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">' . $formatted_last_beskikbaar . '</span>
+		</div>
+		<div class="label-output" style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px; background-color: #FFFFFF;">
+			<span style="font-weight:bold;">
+			<script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+			<lord-icon src="https://cdn.lordicon.com/lpddubrl.json" trigger="loop" style="width:50px;height:50px"></lord-icon>
+			Totale Bedrae van Alle Aankope: ➤
+			</span>
+			<span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">R ' . $total_koop . '</span>
+		</div>
+		<div class="label-output" style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px; background-color: #FFFFCC;">
+			<span style="font-weight:bold;">
+			<script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+			<lord-icon src="https://cdn.lordicon.com/uzajjeek.json" trigger="loop" style="width:50px;height:50px"></lord-icon>
+			Totle Eenhede al Gekry: ➨
+			</span>
+			<span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">' . $formatted_total_ontvang . '</span>
+		</div>
+		<div class="label-output" style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px; background-color: #CCFFFF;">
+			<span style="font-weight:bold;">
+			<script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+			<lord-icon  src="https://cdn.lordicon.com/opirrrtw.json" trigger="loop" style="width:50px;height:50px"></lord-icon>
+			Totale Eenhede al Gebruik: ➽
+			</span>
+			<span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">' . $formatted_total_gebruik . '</span>
+		</div>
+    </div>
 
-
-
-        <div style="display:flex; flex-direction:column; align-items:center;">
-		    <div style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px; background-color: #CCFFCC;">
-				<span style="font-weight:bold;">
-					<script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
-					<lord-icon src="https://cdn.lordicon.com/euubzcfz.json" trigger="loop" style="width:50px;height:50px">
-					</lord-icon>
-					Gemiddelde Gebruik: ➼
-				</span>
-				<span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">' . $avg_gebruik . '</span>
-			</div>
-
-            <div style="display:flex; flex-direction:column; align-items:center;">
-			<div style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px; background-color: #CCCCFF;">
-				<span style="font-weight:bold;">
-				<script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
-				<lord-icon src="https://cdn.lordicon.com/gundqgib.json" trigger="loop" style="width:50px;height:50px">
-				</lord-icon>
-				Gemiddelde Weeklikse Gebruik: ➻
-				</span>
-				<span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">' . $avg_gebruik_weekly . '</span>
-			</div>
-			<div style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px; background-color: #CCCCCC;">
-				<span style="font-weight:bold;">
-				<script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
-				<lord-icon src="https://cdn.lordicon.com/oqhteyrz.json" trigger="loop" style="width:50px;height:50px"></lord-icon>
-				Gemiddelde Maandelikse Gebruik: ➺
-				</span>
-				<span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">' . $avg_gebruik_monthly . '</span>
-			</div>
-			<div style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px; background-color: #FFCCFF;">
-				<span style="font-weight:bold;">
-				<script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
-				<lord-icon src="https://cdn.lordicon.com/ujrcwvwy.json" trigger="loop" style="width:50px;height:50px"></lord-icon>
-				Gemiddelde Jaarlikse Gebruik: ➠
-				</span>
-				<span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">' . $avg_gebruik_yearly . '</span>
-			</div>
-       
-		
+    <div class="flex-container flex-container-half">
+		<div class="label-output" style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px; background-color: #CCFFCC;">
+			<span style="font-weight:bold;">
+			<script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+			<lord-icon src="https://cdn.lordicon.com/euubzcfz.json" trigger="loop" style="width:50px;height:50px">
+			</lord-icon>
+			Gemiddelde Gebruik: ➼
+			</span>
+			<span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">'  . $formatted_avg_gebruik . '</span>
+		</div>
+		<div class="label-output" style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px; background-color: #CCCCFF;">
+			<span style="font-weight:bold;">
+			<script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+			<lord-icon src="https://cdn.lordicon.com/gundqgib.json" trigger="loop" style="width:50px;height:50px">
+			</lord-icon>
+			Gemiddelde Weeklikse Gebruik: ➻
+			</span>
+			<span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">' . $formatted_avg_gebruik_weekly . '</span>
+		</div>
+		<div class="label-output" style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px; background-color: #CCCCCC;">
+			<span style="font-weight:bold;">
+			<script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+			<lord-icon src="https://cdn.lordicon.com/oqhteyrz.json" trigger="loop" style="width:50px;height:50px"></lord-icon>
+			Gemiddelde Maandelikse Gebruik: ➺
+			</span>
+			<span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">' . $formatted_avg_gebruik_monthly . '</span>
+		</div>
+		<div class="label-output" style="border: 1px solid black; border-radius: 25px; padding: 10px; font-size: 20px; margin-bottom:0px; background-color: #FFCCFF;">
+			<span style="font-weight:bold;">
+			<script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+			<lord-icon src="https://cdn.lordicon.com/ujrcwvwy.json" trigger="loop" style="width:50px;height:50px"></lord-icon>
+			Gemiddelde Jaarlikse Gebruik: ➠
+			</span>
+			<span style="margin-left:10px;font-size:20px;color:#FF0000;font-weight:bold;" id="avg_gebruik_nou">' . $formatted_avg_gebruik_yearly . '</span>
+		</div>
+	</div>
+	</div>
 </div>';
-
 // Display table
 $afrikaans_months = array("Januarie", "Februarie", "Maart", "April", "Mei", "Junie", "Julie", "Augustus", "September", "Oktober", "November", "Desember");
 $sql = "SELECT * FROM eenhede ORDER BY Id DESC";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
-
     echo "<table>";
     echo "<tr>
     <th style='font-size: 20px; text-align: center; font-family: Comic Sans MS; color: lime;'>
@@ -376,6 +399,5 @@ if ($result->num_rows > 0) {
 }
 $conn->close();
 ?>
-</div>
 </body>
 </html>
